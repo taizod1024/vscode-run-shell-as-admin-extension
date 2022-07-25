@@ -19,11 +19,11 @@
     "commands": [
       {
         "command": "run-shell-as-admin.runCmd",
-        "title": "cmd"
+        "title": "Run Cmd as Admin"
       },
       {
         "command": "run-shell-as-admin.runPowerShell",
-        "title": "powershell"
+        "title": "Run PowerShell as Admin"
       }
     ],
     "menus": {
@@ -39,19 +39,14 @@
       ],
       "explorer/context": [
         {
-          "submenu": "run-shell-as-admin.submenu",
+          "command": "run-shell-as-admin.runCmd",
           "group": "run-shell-as-admin",
           "when": "explorerResourceIsFolder"
-        }
-      ],
-      "run-shell-as-admin.submenu": [
-        {
-          "command": "run-shell-as-admin.runCmd",
-          "when": "true"
         },
         {
           "command": "run-shell-as-admin.runPowerShell",
-          "when": "true"
+          "group": "run-shell-as-admin",
+          "when": "explorerResourceIsFolder"
         }
       ]
     },

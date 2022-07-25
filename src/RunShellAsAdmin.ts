@@ -94,7 +94,7 @@ class RunShellAsAdmin {
         this.channel.appendLine(`[${this.timestamp()}] dir=${dir}`);
 
         // exec command as administrator
-        let cmd = `powershell -command start-process 'cmd.exe' '/k cd /d ${dir}' -verb runas`;
+        let cmd = `powershell -command start-process 'cmd.exe' -ArgumentList '/k "cd /d ${dir}"' -verb runas`;
         this.channel.appendLine(`[${this.timestamp()}] command=${cmd}`);
         this.execCommand(cmd);
     }
@@ -107,8 +107,7 @@ class RunShellAsAdmin {
         this.channel.appendLine(`[${this.timestamp()}] dir=${dir}`);
 
         // exec command as administrator
-        // TODO powershellの場合の起動フォルダの設定
-        let cmd = `powershell -command start-process 'powershell.exe' '-NoExit -Command { Set-Location ${dir} }' -verb runas`;
+        let cmd = `powershell -command start-process 'cmd.exe' -ArgumentList '/c "cd /d ${dir} && powershell"' -verb runas`;
         this.channel.appendLine(`[${this.timestamp()}] command=${cmd}`);
         this.execCommand(cmd);
     }
