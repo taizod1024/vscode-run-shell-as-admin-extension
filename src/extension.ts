@@ -1,8 +1,8 @@
 import * as vscode from "vscode";
-import { packagelogger } from "./PackageLogger";
+import { runshellasadmin } from "./RunShellAsAdmin";
 
 // extension entrypoint
 export function activate(context: vscode.ExtensionContext) {
-  packagelogger.activate(context);
+    runshellasadmin.activate(context);
 }
 export function deactivate() {}
