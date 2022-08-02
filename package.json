@@ -2,12 +2,16 @@
   "version": "0.0.0",
   "name": "run-shell-as-admin",
   "displayName": "Run Shell as Admin",
-  "description": "windows Run Shell as Admin",
+  "description": "run shell as admin extension for windows",
   "engines": {
     "vscode": "^1.61.0"
   },
   "categories": [
     "Other"
+  ],
+  "keywords": [
+    "shell",
+    "admin"
   ],
   "publisher": "taizod1024",
   "main": "./build/main.js",
