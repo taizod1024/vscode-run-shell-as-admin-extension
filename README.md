@@ -1,4 +1,4 @@
-# run-shell-as-admin
+# Run Shell as Admin
 
 Run Shell as Administrator from explorer
 
