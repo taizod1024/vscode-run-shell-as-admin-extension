@@ -47,12 +47,12 @@ class RunShellAsAdmin {
         // init vscode
         context.subscriptions.push(
             vscode.commands.registerCommand(`${this.appid}.runCmd`, async (uri: vscode.Uri) => {
-                this.channel.show();
                 this.extensionPath = context.extensionPath;
                 try {
                     await this.checkWinDirAsync();
                     await this.runCmdAsync(uri.fsPath);
                 } catch (reason) {
+                    this.channel.show();
                     runshellasadmin.channel.appendLine("**** " + reason + " ****");
                 }
             })
@@ -60,12 +60,12 @@ class RunShellAsAdmin {
 
         context.subscriptions.push(
             vscode.commands.registerCommand(`${this.appid}.runPowerShell`, async (uri: vscode.Uri) => {
-                this.channel.show();
                 this.extensionPath = context.extensionPath;
                 try {
                     await this.checkWinDirAsync();
                     await this.runPowerShellAsync(uri.fsPath);
                 } catch (reason) {
+                    this.channel.show();
                     runshellasadmin.channel.appendLine("**** " + reason + " ****");
                 }
             })
