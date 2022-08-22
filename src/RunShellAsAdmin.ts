@@ -1,22 +1,7 @@
 import * as vscode from "vscode";
 import * as fs from "fs";
+const path = require("path");
 import child_process, { ExecFileSyncOptions } from "child_process";
-import { resolve } from "path/posix";
-import { rejects } from "assert";
-
-/** promise with timeout */
-const timeoutPromise = (func: () => void) => {
-    return new Promise((resolve, reject) => {
-        setTimeout(function () {
-            try {
-                func();
-                resolve(true);
-            } catch (ex) {
-                reject(ex);
-            }
-        });
-    });
-};
 
 /** run-shell-as-admin-extesnion class */
 class RunShellAsAdmin {
@@ -42,6 +27,10 @@ class RunShellAsAdmin {
     public activate(context: vscode.ExtensionContext) {
         // init context
         this.channel = vscode.window.createOutputChannel(this.appid);
+        if (!process.env.WINDIR) {
+            this.channel.appendLine(`[${this.timestamp()}] ${this.appid} failed, no windir`);
+            return;
+        }
         this.channel.appendLine(`[${this.timestamp()}] ${this.appid} activated`);
 
         // init vscode
@@ -50,7 +39,12 @@ class RunShellAsAdmin {
                 this.extensionPath = context.extensionPath;
                 try {
                     await this.checkWinDirAsync();
-                    await this.runCmdAsync(uri.fsPath);
+                    const stats = fs.statSync(uri.fsPath);
+                    if (stats.isDirectory()) {
+                        await this.runCmdAsync(uri.fsPath);
+                    } else if (stats.isFile()) {
+                        await this.runCmdAsync(path.dirname(uri.fsPath));
+                    }
                 } catch (reason) {
                     this.channel.show();
                     runshellasadmin.channel.appendLine("**** " + reason + " ****");
@@ -63,7 +57,12 @@ class RunShellAsAdmin {
                 this.extensionPath = context.extensionPath;
                 try {
                     await this.checkWinDirAsync();
-                    await this.runPowerShellAsync(uri.fsPath);
+                    const stats = fs.statSync(uri.fsPath);
+                    if (stats.isDirectory()) {
+                        await this.runPowerShellAsync(uri.fsPath);
+                    } else if (stats.isFile()) {
+                        await this.runPowerShellAsync(path.dirname(uri.fsPath));
+                    }
                 } catch (reason) {
                     this.channel.show();
                     runshellasadmin.channel.appendLine("**** " + reason + " ****");
