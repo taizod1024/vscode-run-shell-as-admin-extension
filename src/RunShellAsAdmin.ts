@@ -27,6 +27,10 @@ class RunShellAsAdmin {
     public activate(context: vscode.ExtensionContext) {
         // init context
         this.channel = vscode.window.createOutputChannel(this.appid);
+        if (!process.env.WINDIR) {
+            this.channel.appendLine(`[${this.timestamp()}] ${this.appid} failed, no windir`);
+            return;
+        }
         this.channel.appendLine(`[${this.timestamp()}] ${this.appid} activated`);
 
         // init vscode
