@@ -45,13 +45,11 @@
       "explorer/context": [
         {
           "command": "run-shell-as-admin.runCmd",
-          "group": "run-shell-as-admin",
-          "when": "explorerResourceIsFolder"
+          "group": "run-shell-as-admin"
         },
         {
           "command": "run-shell-as-admin.runPowerShell",
-          "group": "run-shell-as-admin",
-          "when": "explorerResourceIsFolder"
+          "group": "run-shell-as-admin"
         }
       ]
     },
