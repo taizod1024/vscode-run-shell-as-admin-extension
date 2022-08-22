@@ -38,7 +38,6 @@ class RunShellAsAdmin {
             vscode.commands.registerCommand(`${this.appid}.runCmd`, async (uri: vscode.Uri) => {
                 this.extensionPath = context.extensionPath;
                 try {
-                    await this.checkWinDirAsync();
                     const stats = fs.statSync(uri.fsPath);
                     if (stats.isDirectory()) {
                         await this.runCmdAsync(uri.fsPath);
@@ -56,7 +55,6 @@ class RunShellAsAdmin {
             vscode.commands.registerCommand(`${this.appid}.runPowerShell`, async (uri: vscode.Uri) => {
                 this.extensionPath = context.extensionPath;
                 try {
-                    await this.checkWinDirAsync();
                     const stats = fs.statSync(uri.fsPath);
                     if (stats.isDirectory()) {
                         await this.runPowerShellAsync(uri.fsPath);
@@ -69,20 +67,6 @@ class RunShellAsAdmin {
                 }
             })
         );
-    }
-
-    /** check project path */
-    public async checkWinDirAsync() {
-        // show channel
-        this.channel.appendLine(`--------`);
-        this.channel.appendLine(`[${this.timestamp()}] checkWinDirAsync:`);
-
-        // check windows directory
-        const windir = process.env.windir;
-        this.channel.appendLine(`[${this.timestamp()}] windir=${windir}`);
-        if (windir === undefined) {
-            throw "ERROR: no windir";
-        }
     }
 
     /** run cmd async */
