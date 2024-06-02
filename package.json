@@ -16,10 +16,6 @@
   ],
   "publisher": "taizod1024",
   "main": "./build/main.js",
-  "activationEvents": [
-    "onCommand:run-shell-as-admin.runCmd",
-    "onCommand:run-shell-as-admin.runPowerShell"
-  ],
   "contributes": {
     "commands": [
       {
