@@ -4,7 +4,7 @@
   "displayName": "Run Shell as Admin",
   "description": "run shell as admin extension for windows",
   "engines": {
-    "vscode": "^1.61.0"
+    "vscode": "^1.75.0"
   },
   "categories": [
     "Other"
@@ -16,10 +16,6 @@
   ],
   "publisher": "taizod1024",
   "main": "./build/main.js",
-  "activationEvents": [
-    "onCommand:run-shell-as-admin.runCmd",
-    "onCommand:run-shell-as-admin.runPowerShell"
-  ],
   "contributes": {
     "commands": [
       {
