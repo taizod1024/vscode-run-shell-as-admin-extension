@@ -6,9 +6,9 @@ import child_process, { ExecFileSyncOptions } from "child_process";
 /** run-shell-as-admin-extesnion class */
 class RunShellAsAdmin {
   /** application id for vscode */
-  public appid = "run-shell-as-admin";
+  public appId = "run-shell-as-admin";
 
-  /** application id for vscode */
+  /** application name */
   public appName = "Run Shell As Admin";
 
   /** channel on vscode */
@@ -31,14 +31,14 @@ class RunShellAsAdmin {
     // init context
     this.channel = vscode.window.createOutputChannel(this.appName, { log: true });
     if (!process.env.WINDIR) {
-      this.channel.appendLine(`${this.appid} failed, no windir`);
+      this.channel.appendLine(`${this.appId} failed, no windir`);
       return;
     }
-    this.channel.appendLine(`${this.appid} activated`);
+    this.channel.appendLine(`${this.appId} activated`);
 
     // init vscode
     context.subscriptions.push(
-      vscode.commands.registerCommand(`${this.appid}.runCmd`, async (uri: vscode.Uri) => {
+      vscode.commands.registerCommand(`${this.appId}.runCmd`, async (uri: vscode.Uri) => {
         this.extensionPath = context.extensionPath;
         try {
           const stats = fs.statSync(uri.fsPath);
@@ -55,7 +55,7 @@ class RunShellAsAdmin {
     );
 
     context.subscriptions.push(
-      vscode.commands.registerCommand(`${this.appid}.runPowerShell`, async (uri: vscode.Uri) => {
+      vscode.commands.registerCommand(`${this.appId}.runPowerShell`, async (uri: vscode.Uri) => {
         this.extensionPath = context.extensionPath;
         try {
           const stats = fs.statSync(uri.fsPath);
