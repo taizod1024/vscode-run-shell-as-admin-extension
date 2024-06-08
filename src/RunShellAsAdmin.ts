@@ -8,6 +8,9 @@ class RunShellAsAdmin {
   /** application id for vscode */
   public appid = "run-shell-as-admin";
 
+  /** application id for vscode */
+  public appName = "Run Shell As Admin";
+
   /** channel on vscode */
   public channel: vscode.OutputChannel;
 
@@ -26,7 +29,7 @@ class RunShellAsAdmin {
   /** activate extension */
   public activate(context: vscode.ExtensionContext) {
     // init context
-    this.channel = vscode.window.createOutputChannel(this.appid, { log: true });
+    this.channel = vscode.window.createOutputChannel(this.appName, { log: true });
     if (!process.env.WINDIR) {
       this.channel.appendLine(`${this.appid} failed, no windir`);
       return;
