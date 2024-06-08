@@ -4,7 +4,7 @@
   "displayName": "Run Shell as Admin",
   "description": "run shell as admin extension for windows",
   "engines": {
-    "vscode": "^1.75.0"
+    "vscode": "^1.90.0"
   },
   "categories": [
     "Other"
@@ -72,7 +72,7 @@
     "@types/node": "^16.11.1",
     "@types/superagent": "^4.1.13",
     "@types/superagent-proxy": "^2.0.1",
-    "@types/vscode": "^1.61.0",
+    "@types/vscode": "^1.90.0",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^5.0.0",
     "bufferutil": "^4.0.5",
@@ -85,7 +85,7 @@
     "ts-node": "^10.3.0",
     "typescript": "^4.4.4",
     "utf-8-validate": "^5.0.7",
-    "vscode": "^0.9.9",
+    "vscode": "^1.1.37",
     "vscode-test": "^1.6.1"
   },
   "repository": {
